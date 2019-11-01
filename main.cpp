@@ -5,8 +5,14 @@ using namespace std;
 
 //-PROTOTYPES----------------
 // (1) add the function prototypes here to match their definitions (below)
+string getUserPassword();
 
-//---------------------------
+bool acceptedPhrase(string password);
+bool acceptedLength(string password);
+
+void displayPassword(string password);
+
+
 
 //-MAIN PROGRAM--------------
 int main()
@@ -16,19 +22,24 @@ int main()
     bool isGoodWord = false; // whether it is an acceptable word
  
     do
-    {
+    { 
         // (2) call the getUserPassword function and store its return in entry
-        
+       entry=getUserPassword();
+
         // (3) call the acceptedLength function w/ the entry argument
         //     and store its return in isGoodLength
-        
+       isGoodLength=acceptedLength(entry);
+             
         // (4) call the acceptedPhrase function w/ the entry argument
         //     and store its return in isGoodWord
+       isGoodWord=acceptedPhrase(entry); 
         
     }while( !isGoodLength || !isGoodWord );
 
     cout<<"Password ";
     // (5) call the displayPassword function w/ the entry argument
+    displayPassword(entry);
+    
     
     cout<<" has been set\n";
 
@@ -47,6 +58,8 @@ string getUserPassword()
     return entered;
 }
 
+
+
 // receives a password and verifies whether or not it is between
 // 8 and 20 characters long
 bool acceptedLength(string password)
@@ -62,6 +75,8 @@ bool acceptedLength(string password)
         return false;
     } 
 }
+
+
 
 // receives a password as a string and returns whether or not it is an
 // accepted word (e.g. "password" is not a valid password
@@ -88,4 +103,8 @@ void displayPassword(string password)
         cout<<"*";
     }
 }
+
 //----------------------------
+
+
+
